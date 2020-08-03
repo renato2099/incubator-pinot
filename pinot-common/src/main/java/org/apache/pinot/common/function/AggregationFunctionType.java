@@ -101,6 +101,13 @@ public enum AggregationFunctionType {
       try {
         return AggregationFunctionType.valueOf(upperCaseFunctionName);
       } catch (Exception e) {
+        if (upperCaseFunctionName.contains("_")) {
+          try {
+            return AggregationFunctionType.valueOf(upperCaseFunctionName.replace("_", ""));
+          } catch (Exception e2) {
+            // throw IllegalArgumentException
+          }
+        }
         throw new IllegalArgumentException("Invalid aggregation function name: " + functionName);
       }
     }

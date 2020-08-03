@@ -106,7 +106,7 @@ public class AggregationFunctionFactory {
         }
         throw new IllegalArgumentException("Invalid percentile function: " + function);
       } else {
-        switch (AggregationFunctionType.valueOf(upperCaseFunctionName)) {
+        switch (AggregationFunctionType.getAggregationFunctionType(upperCaseFunctionName)) {
           case COUNT:
             return new CountAggregationFunction();
           case MIN:
